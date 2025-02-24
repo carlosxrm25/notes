@@ -1,0 +1,25 @@
+INSTALANDO O NVM E O NODE.JS
+
+1 - Baixar e executar o script oficial do NVM
+Link para obter o script mais atualizado: https://github.com/nvm-sh/nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+
+
+2 - Verificando a instalação do NVM
+
+nvm -v
+
+
+
+3 - Verificando e instalando a última versão LTS do NODE
+
+Verificar: nvm ls-remote
+Instalar: nvm install --lts
+
+
+
+4 - Verificando a instalação do NODE
+
+node -v

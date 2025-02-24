@@ -1,0 +1,71 @@
+CONFIGURANDO O GIT E O GITHUB
+
+1 - Identificando usuário local do Git
+
+git config --global user.name "Seu Nome"
+git config --global user.email "seu_email@exemplo.com"
+
+
+
+2 - Configurando o editor padrão do Git
+
+git config --global core.editor "code --wait"
+
+
+
+3 - Para ver as configurações globais do Git:
+git config --global --list
+
+
+
+4 - Gerando uma nova chave SSH
+
+ssh-keygen -t ed25519 -C "seu_email@exemplo.com"
+
+ed25519 é o tipo de algoritmo usado para gerar a chave. Ele oferece um bom equilíbrio entre
+segurança e performance. ED25519 é mais rápido e mais seguro do que RSA, especialmente com
+chaves de 2048 ou 4096 bits. Ele usa um algoritmo mais moderno (Curve25519) e é resistente
+a ataques como aqueles que exploram vulnerabilidades em chaves RSA mais curtas.
+
+
+
+5 - Adicionando a chave ao ssh-agent
+
+eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519
+
+
+
+6 - Adicionando a chave SSH ao GitHub
+
+cat ~/.ssh/id_ed25519.pub
+
+Execute o comando acima para exibir e copiar a chave. No GitHub vá em:
+Settings > SSH and GPG keys > New SSH key
+
+Título: Pode ser uma identificação do computador.
+Key type: Authentication Key.
+Key: Colar a chave.
+
+Clique no botão "Add SSH key"
+
+
+
+7 - Clone um repositório existente
+
+git@github.com:carlosxrm25/notes.git
+
+
+
+8 - Verificando a conexão com o GitHub
+
+git remote -v
+
+Após entrar em um diretório, o comando acima verifica se existe um repositório remoto com o mesmo nome do diretório.
+origin  https://github.com/usuario/repositorio.git (fetch)
+origin  https://github.com/usuario/repositorio.git (push)
+
+
+ssh -T git@github.com
+
+Este outro comando verifica se a chave SSH está funcionando corretamente. A resposta deveria ser algo como:
+Hi carlosxrm25! You've successfully authenticated, but GitHub does not provide shell access.
